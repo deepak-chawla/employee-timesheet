@@ -1,0 +1,12 @@
+<p>employee-detail works!</p>
+
+<select class='select-option'
+        #mySelect
+        (change)='onEmployeeSelected(mySelect.value)'>
+  <option class='option'
+          *ngFor='let employee of employees'
+          [value]="employee.id">{{employee.name}} </option>
+</select>
+
+
+
