@@ -1,12 +1,29 @@
-<p>employee-detail works!</p>
-
 <select class='select-option'
         #mySelect
-        (change)='onEmployeeSelected(mySelect.value)'>
+        (change)='onEmployeeSelected(mySelect.value)'
+>
   <option class='option'
           *ngFor='let employee of employees'
-          [value]="employee.id">{{employee.name}} </option>
+          [value]="employee.id">
+    {{employee.name}}
+  </option>
 </select>
+<br>
+<h2>Week</h2>
 
+
+<div class="week-container" *ngFor="let week of selectedEmployee.weeks">
+  <div *ngFor="let task of week.tasks">
+    <ul *ngFor="let day of task.days">
+      <li>{{day.day}} : <span>{{day.hour}}</span></li>
+      <li>{{day.day}} : <span>Monday</span></li>
+      <li>{{day.day}} : <span>Tuesday</span></li>
+      <li>{{day.day}} : <span>Wednesday</span></li>
+      <li>{{day.day}} : <span>Thursday</span></li>
+      <li>{{day.day}} : <span>Friday</span></li>
+      <li>{{day.day}} : <span>Saturday</span></li>
+    </ul>
+  </div>
+</div>
 
 

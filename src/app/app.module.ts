@@ -10,7 +10,7 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
   declarations: [
     AppComponent,
     EmployeeListComponent,
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
   ],
   imports: [
     BrowserModule,
