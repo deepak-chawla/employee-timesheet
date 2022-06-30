@@ -8,8 +8,7 @@ import {Observable, of} from "rxjs";
 })
 export class EmployeesService {
 
-  constructor() {
-  }
+  constructor() {}
 
   getEmployees(): Observable<Employee[]>{
      return of(employees);

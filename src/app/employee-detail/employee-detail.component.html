@@ -2,7 +2,6 @@
 <select class='select-option'
         #mySelect
         (change)='onEmployeeSelected(mySelect.value)'
-
 >
   <option class='option'
           *ngFor='let employee of employees'
@@ -42,19 +41,19 @@
   </tr>
   <tr >
     <th scope="row">Total</th>
-    <td>00</td>
-    <td>00</td>
-    <td>00</td>
-    <td>00</td>
-    <td>00</td>
-    <td>00</td>
-    <td>00</td>
+    <th>00</th>
+    <th>00</th>
+    <th>00</th>
+    <th>00</th>
+    <th>00</th>
+    <th>00</th>
+    <th>00</th>
   </tr>
   </tbody>
 </table>
 
 <div class="table-buttons">
-  <button type="button" class="btn btn-secondary" [routerLink]="['/']">Go To List</button>
+  <button type="button" class="btn btn-secondary" [routerLink]="['/']">Back To List</button>
   <button type="button" class="btn btn-primary">Save</button>
 </div>
 
