@@ -14,4 +14,9 @@ export class EmployeesService {
   getEmployees(): Observable<Employee[]>{
      return of(employees);
   }
+
+  addEmployee(curObj: any): void{
+
+  }
+
 }

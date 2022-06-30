@@ -17,7 +17,51 @@ export let employees = [
             saturday: 0
           },
           {
-            taskName: "Design of some app",
+            taskName: "Designing new app",
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
+          },
+          {
+            taskName: "Bug fixes",
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
+          }
+        ]
+      },
+      {
+        tasks: [
+          {
+            taskName: "week2 of some app",
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
+          },
+          {
+            taskName: "Designing new app",
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
+          },
+          {
+            taskName: "Bug fixes",
             sunday: 8,
             monday: 5,
             tuesday: 0,

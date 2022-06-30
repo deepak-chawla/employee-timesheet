@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Employee} from "../Employee";
 import {ActivatedRoute} from "@angular/router";
 import {EmployeesService} from "../employees.service";
-import {employees} from "../../employees";
 
 
 @Component({
@@ -16,6 +15,7 @@ export class EmployeeDetailComponent implements OnInit {
   employees: Employee[] = [];
   selectedEmployee: any;
   employeeId: any;
+  week: number  = 0;
 
   constructor(private route: ActivatedRoute, private employeesService: EmployeesService) { }
 
@@ -32,6 +32,17 @@ export class EmployeeDetailComponent implements OnInit {
 
   filterEmployeeById(id: number): Employee{
     return this.employees.filter((employee: any)=> employee.id == id)[0];
+  }
+
+  nextWeek(): void{
+    this.week += 1;
+    console.log(this.week);
+  }
+
+  previousWeek(): void{
+    if(this.week > 0)
+      this.week -= 1;
+    console.log(this.week);
   }
 
 
