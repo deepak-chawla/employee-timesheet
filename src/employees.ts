@@ -1,4 +1,3 @@
-
 export let employees = [
   {
     id: 1,
@@ -6,215 +5,47 @@ export let employees = [
     name: "Kayling",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           },
           {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            taskName: "Design of some app",
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
-    ]
-  },
+  ]
+},
   {
     id: 2,
     code: 66928,
     name: "Blaze",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -226,105 +57,16 @@ export let employees = [
     name: "Clare",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -336,105 +78,16 @@ export let employees = [
     name: "Jonas",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -446,105 +99,16 @@ export let employees = [
     name: "Scarlet",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -556,105 +120,16 @@ export let employees = [
     name: "Frank",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -666,105 +141,16 @@ export let employees = [
     name: "Sandrine",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -776,105 +162,16 @@ export let employees = [
     name: "Adelyn",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -886,105 +183,16 @@ export let employees = [
     name: "Wade",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },
@@ -996,105 +204,16 @@ export let employees = [
     name: "Madden",
     weeks: [
       {
-        tasks:[
+        tasks: [
           {
             taskName: "Development of some app",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Designing New App",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
-          },
-          {
-            taskName: "Bug Fixes",
-            days:[
-              {
-                day: "Sunday",
-                hour: 8
-              },
-              {
-                day: "Monday",
-                hour: 8
-              },
-              {
-                day: "Tuesday",
-                hour: 8
-              },
-              {
-                day: "Wednesday",
-                hour: 8
-              },
-              {
-                day: "Thursday",
-                hour: 8
-              },
-              {
-                day: "Friday",
-                hour: 8
-              },
-              {
-                day: "Saturday",
-                hour: 8
-              }
-            ]
+            sunday: 8,
+            monday: 5,
+            tuesday: 0,
+            wednesday: 5,
+            thursday: 7,
+            friday: 0,
+            saturday: 0
           }
         ]
       },

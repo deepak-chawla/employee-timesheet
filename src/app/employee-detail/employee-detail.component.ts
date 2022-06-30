@@ -19,12 +19,9 @@ export class EmployeeDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private employeesService: EmployeesService) { }
 
-  filterEmployeeById(id: number): Employee{
-    return this.employees.filter((employee: any)=> employee.id == id)[0];
-  }
-
   onEmployeeSelected(value:unknown){
     this.selectedEmployee = this.filterEmployeeById(value as number);
+    console.log(this.selectedEmployee)
   }
 
   getEmployees(): void{
@@ -32,6 +29,12 @@ export class EmployeeDetailComponent implements OnInit {
      .subscribe(employees => this.employees = employees);
    console.log("employees" + this.employees );
   }
+
+  filterEmployeeById(id: number): Employee{
+    return this.employees.filter((employee: any)=> employee.id == id)[0];
+  }
+
+
 
   ngOnInit(): void {
     this.getEmployees();

@@ -1,3 +1,4 @@
+<label><strong>Select Employee: </strong></label>
 <select class='select-option'
         #mySelect
         (change)='onEmployeeSelected(mySelect.value)'
@@ -10,6 +11,44 @@
 </select>
 <br>
 <h2>Week</h2>
+
+
+<table class="table" >
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Task Name</th>
+    <th scope="col">Sunday</th>
+    <th scope="col">Monday</th>
+    <th scope="col">Tuesday</th>
+    <th scope="col">Wednesday</th>
+    <th scope="col">Thursday</th>
+    <th scope="col">Friday</th>
+    <th scope="col">Saturday</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let task of selectedEmployee.weeks[0].tasks">
+    <th scope="row">{{task.taskName}}</th>
+    <td>{{task.sunday}}</td>
+    <td>{{task.monday}}</td>
+    <td>{{task.tuesday}}</td>
+    <td>{{task.wednesday}}</td>
+    <td>{{task.thursday}}</td>
+    <td>{{task.friday}}</td>
+    <td>{{task.saturday}}</td>
+  </tr>
+  <tr >
+    <th scope="row">Total</th>
+    <td>00</td>
+    <td>00</td>
+    <td>00</td>
+    <td>00</td>
+    <td>00</td>
+    <td>00</td>
+    <td>00</td>
+  </tr>
+  </tbody>
+</table>
 
 
 <div class="week-container" *ngFor="let week of selectedEmployee.weeks">
