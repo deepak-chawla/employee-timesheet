@@ -1,0 +1,15 @@
+h2{
+  text-align: center;
+  font-size: 50px;
+  font-family: SansSerif;
+  font-weight: bold;
+}
+
+.table-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.table-buttons button{
+  margin: 10px;
+}

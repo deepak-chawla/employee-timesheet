@@ -10,7 +10,9 @@
   </option>
 </select>
 <br>
-<h2>Week</h2>
+
+  <h2> <i class="fa-solid fa-angle-left"></i> Week  <i class="fa-solid fa-angle-right"></i></h2>
+
 
 
 <table class="table" >
@@ -50,19 +52,9 @@
   </tbody>
 </table>
 
-
-<div class="week-container" *ngFor="let week of selectedEmployee.weeks">
-  <div *ngFor="let task of week.tasks">
-    <ul *ngFor="let day of task.days">
-      <li>{{day.day}} : <span>{{day.hour}}</span></li>
-      <li>{{day.day}} : <span>Monday</span></li>
-      <li>{{day.day}} : <span>Tuesday</span></li>
-      <li>{{day.day}} : <span>Wednesday</span></li>
-      <li>{{day.day}} : <span>Thursday</span></li>
-      <li>{{day.day}} : <span>Friday</span></li>
-      <li>{{day.day}} : <span>Saturday</span></li>
-    </ul>
-  </div>
+<div class="table-buttons">
+  <button type="button" class="btn btn-secondary" [routerLink]="['/']">Go To List</button>
+  <button type="button" class="btn btn-primary">Save</button>
 </div>
 
 
