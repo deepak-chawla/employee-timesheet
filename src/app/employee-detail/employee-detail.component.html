@@ -1,21 +1,33 @@
-<label><strong>Select Employee: </strong></label>
-<select class='select-option'
-        #mySelect
-        (change)='onEmployeeSelected(mySelect.value)'
->
-  <option class='option'
-          *ngFor='let employee of employees'
-          [value]="employee.id"
-          >
-    {{employee.name}}
-  </option>
-  <option *ngIf="selectedEmployee.id == employeeId" selected>{{selectedEmployee.name}}</option>
-</select>
-<br>
+<div class="select-employee">
+  <label><strong>Select Employee: </strong></label>
+  <select class='select-option'
+          #mySelect
+          (change)='onEmployeeSelected(mySelect.value)'
+  >
+    <option class='option'
+            *ngFor='let employee of employees'
+            [value]="employee.id"
+    >
+      {{employee.name}}
+    </option>
+    <option *ngIf="selectedEmployee.id == employeeId" selected>{{selectedEmployee.name}}</option>
+  </select>
+</div>
 
-  <h2> <i class="fa-solid fa-angle-left" (click)="previousWeek()" ></i> Week  <i class="fa-solid fa-angle-right" (click)="nextWeek()"></i></h2>
 
-<table class="table" >
+<div class="header-text">
+  <img src="./assets/images/left-arrow.png" height="40px"  (click)="previousWeek()">
+  <h2>
+    Week {{week + 1}}
+  </h2>
+  <img src="./assets/images/right-arrow.png" height="40px" (click)="nextWeek()">
+  <div class="add-icon">
+    <img src="./assets/images/plus.png" (click)="addRowToTable()" >
+  </div>
+</div>
+<p>{{task}}</p>
+
+<table class="table table-bordered" id="employee-details">
   <thead class="thead-dark">
   <tr>
     <th scope="col">Task Name</th>
@@ -39,8 +51,8 @@
     <td>{{task.friday}}</td>
     <td>{{task.saturday}}</td>
   </tr>
-  <tr >
-    <th scope="row">Total</th>
+  <tr id="total-hours">
+    <th scope="row" >Total</th>
     <th>00</th>
     <th>00</th>
     <th>00</th>
@@ -54,7 +66,7 @@
 
 <div class="table-buttons">
   <button type="button" class="btn btn-secondary" [routerLink]="['/']">Back To List</button>
-  <button type="button" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-primary"  >Save</button>
 </div>
 
 

@@ -13,3 +13,35 @@ h2{
 .table-buttons button{
   margin: 10px;
 }
+
+.header-text{
+  display: flex;
+  justify-content: center;
+}
+
+.header-text h2{
+  margin: 20px;
+}
+
+.header-text img{
+  margin: 30px;
+  cursor: pointer;
+}
+
+.add-icon{
+  position: absolute;
+  right: 100px;
+}
+
+.select-employee select{
+  width: 200px;
+  margin-left: 20px;
+}
+
+.select-employee label{
+  font-family: SansSerif;
+  font-size: large;
+  font-weight: bold;
+}
+
+

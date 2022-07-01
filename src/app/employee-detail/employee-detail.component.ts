@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Employee} from "../Employee";
 import {ActivatedRoute} from "@angular/router";
 import {EmployeesService} from "../employees.service";
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-employee-detail',
@@ -16,18 +16,18 @@ export class EmployeeDetailComponent implements OnInit {
   selectedEmployee: any;
   employeeId: any;
   week: number  = 0;
+  task: string = '';
 
   constructor(private route: ActivatedRoute, private employeesService: EmployeesService) { }
 
   onEmployeeSelected(value:unknown){
     this.selectedEmployee = this.filterEmployeeById(value as number);
-    console.log(this.selectedEmployee)
+    this.week = 0;
   }
 
   getEmployees(): void{
    this.employeesService.getEmployees()
      .subscribe(employees => this.employees = employees);
-   console.log("employees" + this.employees );
   }
 
   filterEmployeeById(id: number): Employee{
@@ -35,14 +35,27 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   nextWeek(): void{
-    this.week += 1;
-    console.log(this.week);
+    if(this.selectedEmployee.weeks.length-1 > this.week){
+      this.week += 1;
+    }
   }
 
   previousWeek(): void{
     if(this.week > 0)
       this.week -= 1;
-    console.log(this.week);
+  }
+
+  addRowToTable() {
+    $("#total-hours").before("<tr>" +
+      "<td><input type='text' style='border: none; width: 100%' placeholder='New Task'></td>" +
+      "<td><input type='number' style='border: none; width: 100%' placeholder='hour'></td>" +
+      "<td><input type='number' style='border: none; width: 100%' placeholder='hour'></td>" +
+      "<td><input type='number' style='border: none; width: 100%' placeholder='hour'></td>" +
+      "<td><input type='number' style='border: none; width: 100%' placeholder='hour'></td>" +
+      "<td><input type='number' style='border: none; width: 100%' placeholder='hour'></td>" +
+      "<td><input type='number' style='border: none; width: 100%' placeholder='hour'></td>" +
+      "<td><input type='number' style='border: none; width: 100%' placeholder='hour'></td>" +
+      "</tr>");
   }
 
 
