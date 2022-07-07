@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeesService} from "../employees.service";
-import {employees} from "../../employees";
+import {Employee} from "../Employee";
 
 @Component({
   selector: 'app-employee-list',
@@ -9,18 +9,17 @@ import {employees} from "../../employees";
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees: any;
+  employees: Employee[] = [];
 
   constructor(private employeesService: EmployeesService) { }
 
 
-  getEmployees(): void{
+
+  ngOnInit(): void {
     this.employeesService.getEmployees()
       .subscribe(employees => this.employees = employees);
   }
 
-  ngOnInit(): void {
-    this.getEmployees();
-  }
+
 
 }

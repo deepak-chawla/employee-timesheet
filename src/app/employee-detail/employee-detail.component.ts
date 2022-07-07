@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {Employee} from "../Employee";
 import {ActivatedRoute} from "@angular/router";
 import {EmployeesService} from "../employees.service";
@@ -10,40 +10,21 @@ import * as $ from 'jquery';
   styleUrls: ['./employee-detail.component.css']
 })
 
-export class EmployeeDetailComponent implements OnInit {
+export class EmployeeDetailComponent implements OnInit{
 
   employees: Employee[] = [];
+  employeeId: any
   selectedEmployee: any;
-  employeeId: any;
-  week: number  = 0;
-  task: string = '';
 
-  constructor(private route: ActivatedRoute, private employeesService: EmployeesService) { }
 
-  onEmployeeSelected(value:unknown){
-    this.selectedEmployee = this.filterEmployeeById(value as number);
-    this.week = 0;
+  constructor(private route: ActivatedRoute, private employeesService: EmployeesService) {
   }
 
-  getEmployees(): void{
-   this.employeesService.getEmployees()
-     .subscribe(employees => this.employees = employees);
+  onEmployeeSelected(value: any): void{
+    this.selectedEmployee = this.employees.find(employees => employees.id == value);
+    console.log(this.selectedEmployee)
   }
 
-  filterEmployeeById(id: number): Employee{
-    return this.employees.filter((employee: any)=> employee.id == id)[0];
-  }
-
-  nextWeek(): void{
-    if(this.selectedEmployee.weeks.length-1 > this.week){
-      this.week += 1;
-    }
-  }
-
-  previousWeek(): void{
-    if(this.week > 0)
-      this.week -= 1;
-  }
 
   addRowToTable() {
     $("#total-hours").before("<tr>" +
@@ -60,9 +41,16 @@ export class EmployeeDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getEmployees();
-    this.employeeId = this.route.snapshot.paramMap.get('employeeId');
-    this.selectedEmployee = this.filterEmployeeById(this.employeeId);
+    this.employeesService.getEmployees()
+      .subscribe(employees =>
+      {this.employees = employees;
+        this.selectedEmployee = this.employees.find(employee => employee.id == this.employeeId);
+      });
+    this.employeeId = this.route.snapshot.paramMap.get("employeeId");
+
   }
+
+
+
 
 }

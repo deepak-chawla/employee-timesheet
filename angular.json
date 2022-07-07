@@ -67,15 +67,19 @@
               "browserTarget": "timesheet:build:production"
             },
             "development": {
-              "browserTarget": "timesheet:build:development"
+              "browserTarget": "timesheet:build:development",
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "./proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "timesheet:build"
+            "browserTarget": "timesheet:build",
+            "proxyConfig": "./proxy.conf.json"
           }
         },
         "test": {
