@@ -13,7 +13,6 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-
   getEmployeeTasks(emp: Employee): Observable<Task[]>{
       return this.http.get<Task[]>(this.taskUrl+`/${emp.id}`);
   }
