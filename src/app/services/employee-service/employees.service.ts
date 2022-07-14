@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Employee} from "./Employee";
-import {employees} from "../employees";
+import {Employee} from "../../Employee";
 import {Observable, of} from "rxjs";
-import {catchError, tap, map} from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({

@@ -1,8 +1,11 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {Employee} from "../Employee";
 import {ActivatedRoute} from "@angular/router";
-import {EmployeesService} from "../employees.service";
+import { EmployeesService } from '../services/employee-service/employees.service';
 import * as $ from 'jquery';
+import { TaskService } from '../services/task-service/task.service';
+import { Task } from '../Task';
+
 
 @Component({
   selector: 'app-employee-detail',
@@ -15,13 +18,19 @@ export class EmployeeDetailComponent implements OnInit{
   employees: Employee[] = [];
   employeeId: any
   selectedEmployee: any;
+  tasks: Task[] = []; 
 
 
-  constructor(private route: ActivatedRoute, private employeesService: EmployeesService) {
+  constructor(private route: ActivatedRoute, 
+    private employeesService: EmployeesService,
+    private taskService: TaskService) {
   }
 
   onEmployeeSelected(value: any): void{
     this.selectedEmployee = this.employees.find(employees => employees.id == value);
+    this.taskService.getEmployeeTasks(this.selectedEmployee)
+    .subscribe(tasks => this.tasks = tasks);
+    console.log(this.tasks)
     console.log(this.selectedEmployee)
   }
 
@@ -46,6 +55,10 @@ export class EmployeeDetailComponent implements OnInit{
       {this.employees = employees;
         this.selectedEmployee = this.employees.find(employee => employee.id == this.employeeId);
       });
+
+      
+
+
     this.employeeId = this.route.snapshot.paramMap.get("employeeId");
 
   }
