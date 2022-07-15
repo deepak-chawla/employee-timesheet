@@ -1,14 +1,7 @@
 <div class="select-employee">
   <label><strong>Select Employee: </strong></label>
-  <select class='select-option'
-          #mySelect
-          (change)='onEmployeeSelected(mySelect.value)'
-
-  >
-    <option class='option'
-            *ngFor='let employee of employees'
-            [value]="employee.id"
-    >
+  <select class='select-option' #mySelect (change)='onEmployeeSelected(mySelect.value)'>
+    <option class='option' *ngFor='let employee of employees' [value]="employee.id">
       {{ employee.name }}
     </option>
     <option *ngIf="selectedEmployee && selectedEmployee.id == employeeId" selected> {{selectedEmployee.name}}</option>
@@ -16,58 +9,55 @@
 </div>
 
 
-<!-- <div class="header-text">
- <img src="./assets/images/left-arrow.png" height="40px"  (click)="previousWeek()">
- <h2>
-   Week {{week + 1}}
- </h2>
- <img src="./assets/images/right-arrow.png" height="40px" (click)="nextWeek()">
- <div class="add-icon">
-   <img src="./assets/images/plus.png" (click)="addRowToTable()" >
- </div>
+<div class="header-text">
+  <img src="./assets/images/left-arrow.png" height="40px">
+  <h2>
+    Week
+  </h2>
+  <img src="./assets/images/right-arrow.png" height="40px">
+  <div class="add-icon">
+    <img src="./assets/images/plus.png">
+  </div>
 </div>
-<p>{{task}}</p> -->
-
-<table class="table table-bordered" id="employee-details">
- <thead class="thead-dark">
- <tr>
-   <th scope="col">Task Name</th>
-   <th scope="col">Sunday</th>
-   <th scope="col">Monday</th>
-   <th scope="col">Tuesday</th>
-   <th scope="col">Wednesday</th>
-   <th scope="col">Thursday</th>
-   <th scope="col">Friday</th>
-   <th scope="col">Saturday</th>
- </tr>
- </thead>
- <tbody>
- <tr *ngFor="let task of tasks">
-   <th scope="row">{{task.taskName}}</th>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
- </tr>
- <tr id="total-hours">
-   <th scope="row" >Total</th>
-   <th>00</th>
-   <th>00</th>
-   <th>00</th>
-   <th>00</th>
-   <th>00</th>
-   <th>00</th>
-   <th>00</th>
- </tr>
- </tbody>
-</table>
-
-<!--<div class="table-buttons">-->
-<!--  <button type="button" class="btn btn-secondary" [routerLink]="['/']">Back To List</button>-->
-<!--  <button type="submit" class="btn btn-primary"  >Save</button>-->
-<!--</div>-->
+  <table class="table table-bordered" id="employee-details">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Task Name</th>
+        <th scope="col">Sunday</th>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+        <th scope="col">Saturday</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of tasks">
+        <th scope="row">{{task.taskName}}</th>
+        <td>{{task.sunday}}</td>
+        <td>{{task.monday}}</td>
+        <td>{{task.tuesday}}</td>
+        <td>{{task.wednesday}}</td>
+        <td>{{task.thursday}}</td>
+        <td>{{task.friday}}</td>
+        <td>{{task.saturday}}</td>
+      </tr>
+      <tr id="total-hours">
+        <th scope="row">Total</th>
+        <th>00</th>
+        <th>00</th>
+        <th>00</th>
+        <th>00</th>
+        <th>00</th>
+        <th>00</th>
+        <th>00</th>
+      </tr>
+    </tbody>
+  </table>
 
 
+  <div class="table-buttons">
+    <button type="button" class="btn btn-secondary" [routerLink]="['/']">Back To List</button>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
