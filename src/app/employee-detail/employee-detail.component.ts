@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Employee } from "../Employee";
-import { ActivatedRoute } from "@angular/router";
-import { EmployeesService } from '../services/employee-service/employees.service';
+import {Component, OnInit} from '@angular/core';
+import {Employee} from "../Employee";
+import {ActivatedRoute} from "@angular/router";
+import {EmployeesService} from '../services/employee-service/employees.service';
 import * as $ from 'jquery';
-import { TaskService } from '../services/task-service/task.service';
-import { Task } from '../Task';
+import {TaskService} from '../services/task-service/task.service';
+import {Task} from '../Task';
 
 @Component({
   selector: 'app-employee-detail',
@@ -29,8 +29,9 @@ export class EmployeeDetailComponent implements OnInit {
     this.selectedEmployee = this.employees.find(employees => employees.id == value);
     this.taskService.getEmployeeTasks(this.selectedEmployee)
       .subscribe(tasks => this.tasks = tasks);
-      this.employeeId = 0;
+    this.employeeId = 0;
   }
+
 
   //  addRowToTable() {
   //   $("#total-hours").before("<tr>" +
