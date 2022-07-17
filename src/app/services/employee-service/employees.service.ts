@@ -13,12 +13,7 @@ export class EmployeesService {
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<Employee[]> {
-    //return of(employees);
     return this.http.get<Employee[]>(this.employeesUrl);
   }
-
-  // addEmployee(curObj: any): void{
-  //
-  // }
 
 }

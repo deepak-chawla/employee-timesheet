@@ -44,6 +44,4 @@ export class EmployeeListComponent implements OnInit {
       .subscribe(employees => this.employees = employees);
   }
 
-
-
 }
