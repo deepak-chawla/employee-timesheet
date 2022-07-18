@@ -85,6 +85,7 @@ export class EmployeeDetailComponent implements OnInit {
     this.taskForm.value.Tasks.forEach((task: Task) => {
       if (task.tid == null) {
         task.employee = this.selectedEmployee;
+        task.date = new Date();
       }
       this.taskService.updateEmployeeTask(task).subscribe();
     });
