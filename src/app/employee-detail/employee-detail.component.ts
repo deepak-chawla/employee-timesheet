@@ -90,6 +90,9 @@ export class EmployeeDetailComponent implements OnInit {
 
   onSubmit(): void{
     this.taskForm.value.Tasks.forEach((task: Task)=>{
+      if(task.tid == null){
+        task.employee = this.selectedEmployee;
+      }
       this.taskService.updateEmployeeTask(task).subscribe(
         task => console.log(task)
       )

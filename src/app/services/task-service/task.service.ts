@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/Employee';
@@ -18,7 +18,7 @@ export class TaskService {
   }
 
   updateEmployeeTask(task: Task): Observable<Task>{
+        console.log(task);
     return this.http.put<Task>(this.taskUrl,task);
-    console.log("task updated: "+task.taskName);
   }
 }
