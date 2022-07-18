@@ -33,6 +33,10 @@ h2{
   right: 100px;
 }
 
+.select-employee{
+  display: flex;
+}
+
 .select-employee select{
   width: 200px;
   margin-left: 20px;
@@ -45,3 +49,7 @@ h2{
 }
 
 
+.form-dropdown{
+  font-size: large;
+  font-weight: bold;
+}

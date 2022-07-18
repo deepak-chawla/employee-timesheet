@@ -1,24 +1,22 @@
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/Employee';
 import { Task } from 'src/app/Task';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
+  private taskUrl: string = 'http://localhost:8080/api/task';
 
-  private taskUrl: string = "http://localhost:8080/api/task";
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getEmployeeTasks(emp: Employee): Observable<Task[]>{
-      return this.http.get<Task[]>(this.taskUrl+`/${emp.id}`);
+  getEmployeeTasks(emp: Employee): Observable<Task[]> {
+    return this.http.get<Task[]>(this.taskUrl + `/${emp.id}`);
   }
 
-  updateEmployeeTask(task: Task): Observable<Task>{
-        console.log(task);
-    return this.http.put<Task>(this.taskUrl,task);
+  updateEmployeeTask(task: Task): Observable<Task> {
+    return this.http.put<Task>(this.taskUrl, task);
   }
 }

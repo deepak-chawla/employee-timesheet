@@ -1,10 +1,10 @@
 <div class="select-employee">
   <label><strong>Select Employee: </strong></label>
-  <select class='select-option' #mySelect (change)='onEmployeeSelected(mySelect.value)'>
+  <select class='form-control form-dropdown' #mySelect (change)='onEmployeeSelected(mySelect.value)'>
     <option class='option' *ngFor='let employee of employees' [value]="employee.id">
       {{ employee.name }}
     </option>
-    <option *ngIf="selectedEmployee && selectedEmployee.id == employeeId" selected> {{selectedEmployee.name}}</option>
+    <option *ngIf="selectedEmployee && selectedEmployee.id == employeeId" hidden selected> {{selectedEmployee.name}}</option>
   </select>
 </div>
 
@@ -35,11 +35,14 @@
     </tr>
     </thead>
     <tbody formArrayName="Tasks">
-    <tr *ngFor="let obj of formArr.controls; let i = index; let l = last"
+    <tr *ngFor="let obj of formArr.controls; let i = index;"
         [formGroupName]="i">
-      <th scope="row">
-        <input type="text" id="taskName" formControlName="taskName" style="border: none; width: 100%">
-      </th>
+      <td>
+        <select class="form-control form-dropdown" formControlName="taskName" >
+          <option hidden selected>{{obj.value.taskName ? obj.value.taskName : "Select Task"}}</option>
+          <option *ngFor="let option of taskOptions">{{option}}</option>
+        </select>
+      </td>
       <td><input type="text" id="sunday" formControlName="sunday" size="4" style="border: none"></td>
       <td><input type="text" id="monday" formControlName="monday" size="4" style="border: none"></td>
       <td><input type="text" id="tuesday" formControlName="tuesday" size="4" style="border: none"></td>
@@ -48,15 +51,15 @@
       <td><input type="text" id="friday" formControlName="friday" size="4" style="border: none"></td>
       <td><input type="text" id="saturday" formControlName="saturday" size="4" style="border: none"></td>
     </tr>
-    <tr id="total-hours">
+    <tr>
       <th scope="row">Total</th>
-      <th>00</th>
-      <th>00</th>
-      <th>00</th>
-      <th>00</th>
-      <th>00</th>
-      <th>00</th>
-      <th>00</th>
+      <th>{{getDayTotal("sunday")}}</th>
+      <th>{{getDayTotal("monday")}}</th>
+      <th>{{getDayTotal("tuesday")}}</th>
+      <th>{{getDayTotal("wednesday")}}</th>
+      <th>{{getDayTotal("thursday")}}</th>
+      <th>{{getDayTotal("friday")}}</th>
+      <th>{{getDayTotal("saturday")}}</th>
     </tr>
     </tbody>
   </table>

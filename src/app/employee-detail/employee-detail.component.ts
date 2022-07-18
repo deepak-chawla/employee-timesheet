@@ -1,33 +1,36 @@
-import {Component, OnInit} from '@angular/core';
-import {Employee} from "../Employee";
-import {ActivatedRoute} from "@angular/router";
-import {EmployeesService} from '../services/employee-service/employees.service';
-import {FormGroup, FormBuilder, FormControl, FormArray} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Employee } from '../Employee';
+import { ActivatedRoute } from '@angular/router';
+import { EmployeesService } from '../services/employee-service/employees.service';
+import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 import * as $ from 'jquery';
-import {TaskService} from '../services/task-service/task.service';
-import {Task} from '../Task';
+import { TaskService } from '../services/task-service/task.service';
+import { Task } from '../Task';
+import { reduce } from 'rxjs';
 
 @Component({
   selector: 'app-employee-detail',
   templateUrl: './employee-detail.component.html',
-  styleUrls: ['./employee-detail.component.css']
+  styleUrls: ['./employee-detail.component.css'],
 })
-
 export class EmployeeDetailComponent implements OnInit {
-
   employees: Employee[] = [];
-  employeeId: any
+  employeeId: any;
   selectedEmployee: any;
   tasks: Task[] = [];
   taskForm!: FormGroup;
+  taskOptions: any = [
+    'Web Development',
+    'Development of Application',
+    'Bug Solving',
+  ];
 
   constructor(
     private route: ActivatedRoute,
     private employeesService: EmployeesService,
     private taskService: TaskService,
     private fb: FormBuilder
-  ) {
-  }
+  ) {}
 
   createTaskForm() {
     this.taskForm = this.fb.group({
@@ -38,19 +41,6 @@ export class EmployeeDetailComponent implements OnInit {
   get formArr() {
     return this.taskForm.get('Tasks') as FormArray;
   }
-
-  // initTasks() {
-  //   return this.fb.group({
-  //     taskName: [''],
-  //     sunday: [''],
-  //     monday: [''],
-  //     tuesday: [''],
-  //     wednesday: [''],
-  //     thursday: [''],
-  //     friday: [''],
-  //     saturday: ['']
-  //   });
-  // }
 
   renderTasks() {
     this.tasks.forEach((task) => {
@@ -70,7 +60,7 @@ export class EmployeeDetailComponent implements OnInit {
       friday: [task.friday],
       saturday: [task.saturday],
       date: [task.date],
-      employee: [task.employee]
+      employee: [task.employee],
     });
   }
 
@@ -83,27 +73,61 @@ export class EmployeeDetailComponent implements OnInit {
       wednesday: 0,
       thursday: 0,
       friday: 0,
-      saturday: 0
-    }
+      saturday: 0,
+    };
     this.formArr.push(this.addTask(obj));
   }
 
-  onSubmit(): void{
-    this.taskForm.value.Tasks.forEach((task: Task)=>{
-      if(task.tid == null){
+  onSubmit(): void {
+    this.taskForm.value.Tasks.forEach((task: Task) => {
+      if (task.tid == null) {
         task.employee = this.selectedEmployee;
       }
-      this.taskService.updateEmployeeTask(task).subscribe(
-        task => console.log(task)
-      )
-    })
+      this.taskService.updateEmployeeTask(task).subscribe((task) => {
+        window.alert('Task Added : ' + task.taskName);
+      });
+    });
   }
 
+  getDayTotal(day: string): number {
+    switch (day) {
+      case 'sunday':
+        return this.tasks.reduce((total, curObj) => total + curObj.sunday, 0);
+        break;
+      case 'monday':
+        return this.tasks.reduce((total, curObj) => total + curObj.monday, 0);
+        break;
+      case 'tuesday':
+        return this.tasks.reduce((total, curObj) => total + curObj.tuesday, 0);
+        break;
+      case 'wednesday':
+        return this.tasks.reduce(
+          (total, curObj) => total + curObj.wednesday,
+          0
+        );
+        break;
+      case 'thursday':
+        return this.tasks.reduce((total, curObj) => total + curObj.thursday, 0);
+        break;
+      case 'friday':
+        return this.tasks.reduce((total, curObj) => total + curObj.friday, 0);
+        break;
+      case 'saturday':
+        return this.tasks.reduce((total, curObj) => total + curObj.saturday, 0);
+        break;
+      default:
+        return 0;
+        break;
+    }
+  }
 
   onEmployeeSelected(value: any): void {
-    this.selectedEmployee = this.employees.find(employees => employees.id == value);
-    this.taskService.getEmployeeTasks(this.selectedEmployee)
-      .subscribe(tasks => {
+    this.selectedEmployee = this.employees.find(
+      (employees) => employees.id == value
+    );
+    this.taskService
+      .getEmployeeTasks(this.selectedEmployee)
+      .subscribe((tasks) => {
         this.tasks = tasks;
         this.createTaskForm();
         this.renderTasks();
@@ -112,20 +136,19 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.employeesService.getEmployees()
-      .subscribe(employees => {
-        this.employees = employees;
-        this.selectedEmployee = this.employees.find(employee => employee.id == this.employeeId);
-        this.taskService.getEmployeeTasks(this.selectedEmployee)
-          .subscribe(tasks => {
-            this.tasks = tasks;
-            this.createTaskForm();
-            this.renderTasks();
-          });
-      });
-    this.employeeId = this.route.snapshot.paramMap.get("employeeId");
-
+    this.employeesService.getEmployees().subscribe((employees) => {
+      this.employees = employees;
+      this.selectedEmployee = this.employees.find(
+        (employee) => employee.id == this.employeeId
+      );
+      this.taskService
+        .getEmployeeTasks(this.selectedEmployee)
+        .subscribe((tasks) => {
+          this.tasks = tasks;
+          this.createTaskForm();
+          this.renderTasks();
+        });
+    });
+    this.employeeId = this.route.snapshot.paramMap.get('employeeId');
   }
-
 }
