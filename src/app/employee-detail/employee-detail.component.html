@@ -4,10 +4,10 @@
     <option class='option' *ngFor='let employee of employees' [value]="employee.id">
       {{ employee.name }}
     </option>
-    <option *ngIf="selectedEmployee && selectedEmployee.id == employeeId" hidden selected> {{selectedEmployee.name}}</option>
+    <option *ngIf="selectedEmployee && selectedEmployee.id == employeeId" hidden
+            selected> {{selectedEmployee.name}}</option>
   </select>
 </div>
-
 
 <div class="header-text">
   <img src="./assets/images/left-arrow.png" height="40px">
@@ -38,7 +38,7 @@
     <tr *ngFor="let obj of formArr.controls; let i = index;"
         [formGroupName]="i">
       <td>
-        <select class="form-control form-dropdown" formControlName="taskName" >
+        <select class="form-control form-dropdown" formControlName="taskName">
           <option hidden selected>{{obj.value.taskName ? obj.value.taskName : "Select Task"}}</option>
           <option *ngFor="let option of taskOptions">{{option}}</option>
         </select>

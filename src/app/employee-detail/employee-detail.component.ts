@@ -20,9 +20,12 @@ export class EmployeeDetailComponent implements OnInit {
   tasks: Task[] = [];
   taskForm!: FormGroup;
   taskOptions: any = [
-    'Web Development',
-    'Development of Application',
-    'Bug Solving',
+    'Design software',
+    'Website development',
+    'Development of application',
+    'Bug fixes',
+    'Software testing',
+    'Deployment',
   ];
 
   constructor(
@@ -83,10 +86,9 @@ export class EmployeeDetailComponent implements OnInit {
       if (task.tid == null) {
         task.employee = this.selectedEmployee;
       }
-      this.taskService.updateEmployeeTask(task).subscribe((task) => {
-        window.alert('Task Added : ' + task.taskName);
-      });
+      this.taskService.updateEmployeeTask(task).subscribe();
     });
+    window.alert('Tasks Successfully Updated');
   }
 
   getDayTotal(day: string): number {
