@@ -26,6 +26,8 @@ export class EmployeeDetailComponent implements OnInit {
     'Deployment',
   ];
 
+  private workingHours: number = 24;
+
   constructor(
     private route: ActivatedRoute,
     private employeesService: EmployeesService,
@@ -53,21 +55,33 @@ export class EmployeeDetailComponent implements OnInit {
     return this.fb.group({
       tid: [task.tid],
       taskName: [task.taskName, Validators.required],
-      sunday: [task.sunday, Validators.max(24 - this.getDayTotal('sunday'))],
-      monday: [task.monday, Validators.max(24 - this.getDayTotal('monday'))],
-      tuesday: [task.tuesday, Validators.max(24 - this.getDayTotal('tuesday'))],
+      sunday: [
+        task.sunday,
+        Validators.max(this.workingHours - this.getDayTotal('sunday')),
+      ],
+      monday: [
+        task.monday,
+        Validators.max(this.workingHours - this.getDayTotal('monday')),
+      ],
+      tuesday: [
+        task.tuesday,
+        Validators.max(this.workingHours - this.getDayTotal('tuesday')),
+      ],
       wednesday: [
         task.wednesday,
-        Validators.max(24 - this.getDayTotal('wednesday')),
+        Validators.max(this.workingHours - this.getDayTotal('wednesday')),
       ],
       thursday: [
         task.thursday,
-        Validators.max(24 - this.getDayTotal('thursday')),
+        Validators.max(this.workingHours - this.getDayTotal('thursday')),
       ],
-      friday: [task.friday, Validators.max(24 - this.getDayTotal('friday'))],
+      friday: [
+        task.friday,
+        Validators.max(this.workingHours - this.getDayTotal('friday')),
+      ],
       saturday: [
         task.saturday,
-        Validators.max(24 - this.getDayTotal('saturday')),
+        Validators.max(this.workingHours - this.getDayTotal('saturday')),
       ],
       date: [task.date],
       employee: [task.employee],
