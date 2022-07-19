@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" >
   <table class="table table-bordered" id="employee-details">
     <thead class="thead-dark">
     <tr>
@@ -43,13 +43,41 @@
           <option *ngFor="let option of taskOptions">{{option}}</option>
         </select>
       </td>
-      <td><input type="text" id="sunday" formControlName="sunday" size="4" style="border: none"></td>
-      <td><input type="text" id="monday" formControlName="monday" size="4" style="border: none"></td>
-      <td><input type="text" id="tuesday" formControlName="tuesday" size="4" style="border: none"></td>
-      <td><input type="text" id="wednesday" formControlName="wednesday" size="4" style="border: none"></td>
-      <td><input type="text" id="thursday" formControlName="thursday" size="4" style="border: none"></td>
-      <td><input type="text" id="friday" formControlName="friday" size="4" style="border: none"></td>
-      <td><input type="text" id="saturday" formControlName="saturday" size="4" style="border: none"></td>
+      <td>
+        <input [class.is-invalid]="obj.get('sunday')?.invalid && obj.get('sunday')?.touched" type="text" id="sunday"
+               formControlName="sunday" size="2" class="form-control">
+        <small [class.d-none]="obj.get('sunday')?.valid || obj.get('sunday')" class="text-danger">PLease enter valid hours</small>
+      </td>
+      <td>
+        <input [class.is-invalid]="obj.get('monday')?.invalid && obj.get('monday')?.touched" type="text" id="monday"
+               formControlName="monday" size="2" class="form-control">
+        <small [class.d-none]="obj.get('monday')?.valid || obj.get('monday')" class="text-danger">PLease enter valid hours</small>
+      </td>
+      <td>
+        <input [class.is-invalid]="obj.get('tuesday')?.invalid && obj.get('tuesday')?.touched" type="text" id="tuesday"
+               formControlName="tuesday" size="2" class="form-control">
+        <small [class.d-none]="obj.get('tuesday')?.valid || obj.get('tuesday')" class="text-danger">PLease enter valid hours</small>
+      </td>
+      <td>
+        <input [class.is-invalid]="obj.get('wednesday')?.invalid && obj.get('wednesday')?.touched" type="text" id="wednesday"
+               formControlName="wednesday" size="2" class="form-control">
+        <small [class.d-none]="obj.get('wednesday')?.valid || obj.get('wednesday')" class="text-danger">PLease enter valid hours</small>
+      </td>
+      <td>
+        <input [class.5]="obj.get('thursday')?.invalid && obj.get('thursday')?.touched" type="text" id="thursday"
+               formControlName="thursday" size="2" class="form-control">
+        <small [class.d-none]="obj.get('thursday')?.valid || obj.get('thursday')" class="text-danger">PLease enter valid hours</small>
+      </td>
+      <td>
+        <input [class.is-invalid]="obj.get('friday')?.invalid && obj.get('friday')?.touched" type="text" id="friday"
+               formControlName="friday" size="2" class="form-control">
+        <small [class.d-none]="obj.get('friday')?.valid || obj.get('friday')" class="text-danger">PLease enter valid hours</small>
+      </td>
+      <td>
+        <input [class.is-invalid]="obj.get('saturday')?.invalid && obj.get('saturday')?.touched" type="text" id="saturday"
+               formControlName="saturday" size="2" class="form-control">
+        <small [class.d-none]="obj.get('saturday')?.valid || obj.get('saturday')" class="text-danger">PLease enter valid hours</small>
+      </td>
     </tr>
     <tr>
       <th scope="row">Total</th>
@@ -65,7 +93,7 @@
   </table>
   <div class="table-buttons">
     <button type="button" class="btn btn-secondary" [routerLink]="['/']">Back To List</button>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button [disabled]="!taskForm.valid" type="submit" class="btn btn-primary">Save</button>
   </div>
 </form>
 

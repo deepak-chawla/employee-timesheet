@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../Employee';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeesService } from '../services/employee-service/employees.service';
-import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
-import * as $ from 'jquery';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { TaskService } from '../services/task-service/task.service';
 import { Task } from '../Task';
-import { reduce } from 'rxjs';
 
 @Component({
   selector: 'app-employee-detail',
@@ -19,7 +17,7 @@ export class EmployeeDetailComponent implements OnInit {
   selectedEmployee: any;
   tasks: Task[] = [];
   taskForm!: FormGroup;
-  taskOptions: any = [
+  taskOptions: string[] = [
     'Design software',
     'Website development',
     'Development of application',
@@ -47,11 +45,36 @@ export class EmployeeDetailComponent implements OnInit {
 
   renderTasks() {
     this.tasks.forEach((task) => {
-      this.formArr.push(this.addTask(task));
+      this.formArr.push(this.initTasks(task));
     });
   }
 
   addTask(task: any) {
+    return this.fb.group({
+      tid: [task.tid],
+      taskName: [task.taskName, Validators.required],
+      sunday: [task.sunday, Validators.max(24 - this.getDayTotal('sunday'))],
+      monday: [task.monday, Validators.max(24 - this.getDayTotal('monday'))],
+      tuesday: [task.tuesday, Validators.max(24 - this.getDayTotal('tuesday'))],
+      wednesday: [
+        task.wednesday,
+        Validators.max(24 - this.getDayTotal('wednesday')),
+      ],
+      thursday: [
+        task.thursday,
+        Validators.max(24 - this.getDayTotal('thursday')),
+      ],
+      friday: [task.friday, Validators.max(24 - this.getDayTotal('friday'))],
+      saturday: [
+        task.saturday,
+        Validators.max(24 - this.getDayTotal('saturday')),
+      ],
+      date: [task.date],
+      employee: [task.employee],
+    });
+  }
+
+  initTasks(task: Task) {
     return this.fb.group({
       tid: [task.tid],
       taskName: [task.taskName],
@@ -90,6 +113,9 @@ export class EmployeeDetailComponent implements OnInit {
       this.taskService.updateEmployeeTask(task).subscribe();
     });
     window.alert('Tasks Successfully Updated');
+    this.taskService
+      .getEmployeeTasks(this.selectedEmployee)
+      .subscribe((tasks) => (this.tasks = tasks));
   }
 
   getDayTotal(day: string): number {
@@ -135,7 +161,7 @@ export class EmployeeDetailComponent implements OnInit {
         this.createTaskForm();
         this.renderTasks();
       });
-    this.employeeId = 0;
+    this.employeeId = this.selectedEmployee.employeeId;
   }
 
   ngOnInit(): void {
