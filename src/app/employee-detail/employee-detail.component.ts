@@ -17,6 +17,7 @@ export class EmployeeDetailComponent implements OnInit {
   selectedEmployee: any;
   tasks: Task[] = [];
   taskForm!: FormGroup;
+  hasChanged: any;
   taskOptions: string[] = [
     'Design software',
     'Website development',

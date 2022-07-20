@@ -19,4 +19,8 @@ export class TaskService {
   updateEmployeeTask(task: Task): Observable<Task> {
     return this.http.put<Task>(this.taskUrl, task);
   }
+
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.taskUrl + '/tasks');
+  }
 }
