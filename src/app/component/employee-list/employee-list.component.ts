@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeesService } from '../services/employee-service/employees.service';
-import { Employee } from '../Employee';
-import { TaskService } from '../services/task-service/task.service';
-import { Task } from '../Task';
+import { EmployeesService } from '../../services/employee-service/employees.service';
+import { Employee } from '../../shared/Employee';
+import { TaskService } from '../../services/task-service/task.service';
+import { Task } from '../../shared/Task';
 
 @Component({
   selector: 'app-employee-list',
@@ -17,6 +17,14 @@ export class EmployeeListComponent implements OnInit {
     private employeesService: EmployeesService,
     private taskServices: TaskService
   ) {}
+
+  ngOnInit(): void {
+    this.employeesService
+      .getEmployees()
+      .subscribe((employees) => (this.employees = employees));
+
+    this.taskServices.getTasks().subscribe((tasks) => (this.taskList = tasks));
+  }
 
   getWeeklyTotalHours(employeeId: number): number {
     const empTasks = this.taskList.filter(
@@ -33,12 +41,5 @@ export class EmployeeListComponent implements OnInit {
         currentValue.saturday;
       return total;
     }, 0);
-  }
-
-  ngOnInit(): void {
-    this.employeesService
-      .getEmployees()
-      .subscribe((employees) => (this.employees = employees));
-    this.taskServices.getTasks().subscribe((tasks) => (this.taskList = tasks));
   }
 }

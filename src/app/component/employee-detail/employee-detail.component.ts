@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../Employee';
+import { Employee } from '../../shared/Employee';
 import { ActivatedRoute } from '@angular/router';
-import { EmployeesService } from '../services/employee-service/employees.service';
+import { EmployeesService } from '../../services/employee-service/employees.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { TaskService } from '../services/task-service/task.service';
-import { Task } from '../Task';
+import { TaskService } from '../../services/task-service/task.service';
+import { Task } from '../../shared/Task';
+import { taskOptions } from '../../shared/constant/TaskOptions';
 
 @Component({
   selector: 'app-employee-detail',
@@ -17,15 +18,7 @@ export class EmployeeDetailComponent implements OnInit {
   selectedEmployee: any;
   tasks: Task[] = [];
   taskForm!: FormGroup;
-  hasChanged: any;
-  taskOptions: string[] = [
-    'Design software',
-    'Website development',
-    'Development of application',
-    'Bug fixes',
-    'Software testing',
-    'Deployment',
-  ];
+  taskOptions: any = taskOptions;
 
   private workingHours: number = 24;
 
@@ -35,6 +28,24 @@ export class EmployeeDetailComponent implements OnInit {
     private taskService: TaskService,
     private fb: FormBuilder
   ) {}
+
+  ngOnInit(): void {
+    this.employeesService.getEmployees().subscribe((employees) => {
+      this.employees = employees;
+      this.selectedEmployee = this.employees.find(
+        (employee) => employee.id == this.employeeId
+      );
+      console.log(`ngOnInit ${this.selectedEmployee.name}`);
+      this.taskService
+        .getEmployeeTasks(this.selectedEmployee)
+        .subscribe((tasks) => {
+          this.tasks = tasks;
+          this.createTaskForm();
+          this.renderTasks();
+        });
+    });
+    this.employeeId = this.route.snapshot.paramMap.get('employeeId');
+  }
 
   createTaskForm() {
     this.taskForm = this.fb.group({
@@ -127,7 +138,7 @@ export class EmployeeDetailComponent implements OnInit {
       }
       this.taskService.updateEmployeeTask(task).subscribe();
     });
-    window.alert('Tasks Successfully Updated');
+    this.employeeId = this.selectedEmployee.id;
     this.taskService
       .getEmployeeTasks(this.selectedEmployee)
       .subscribe((tasks) => (this.tasks = tasks));
@@ -177,22 +188,6 @@ export class EmployeeDetailComponent implements OnInit {
         this.renderTasks();
       });
     this.employeeId = this.selectedEmployee.employeeId;
-  }
-
-  ngOnInit(): void {
-    this.employeesService.getEmployees().subscribe((employees) => {
-      this.employees = employees;
-      this.selectedEmployee = this.employees.find(
-        (employee) => employee.id == this.employeeId
-      );
-      this.taskService
-        .getEmployeeTasks(this.selectedEmployee)
-        .subscribe((tasks) => {
-          this.tasks = tasks;
-          this.createTaskForm();
-          this.renderTasks();
-        });
-    });
-    this.employeeId = this.route.snapshot.paramMap.get('employeeId');
+    console.log(`onEmployeeSelected ${this.selectedEmployee.name}`);
   }
 }

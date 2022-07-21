@@ -1,22 +1,20 @@
 <div class="select-employee">
   <label><strong>Select Employee: </strong></label>
   <select class='form-control form-dropdown' #mySelect (change)='onEmployeeSelected(mySelect.value)'>
-    <option class='option' *ngFor='let employee of employees' [value]="employee.id">
+    <option class='option' *ngFor='let employee of employees' [value]="employee.id" [selected]="employee == selectedEmployee">
       {{ employee.name }}
     </option>
-    <option *ngIf="selectedEmployee && selectedEmployee.id == employeeId" hidden
-            selected> {{selectedEmployee.name}}</option>
   </select>
 </div>
 
 <div class="header-text">
-  <img src="./assets/images/left-arrow.png" height="40px">
+  <img src="../../../assets/images/left-arrow.png" height="40px">
   <h2>
     Week
   </h2>
-  <img src="./assets/images/right-arrow.png" height="40px">
+  <img src="../../../assets/images/right-arrow.png" height="40px">
   <div class="add-icon">
-    <img src="./assets/images/plus.png" (click)="addNewRow()">
+    <img src="../../../assets/images/plus.png" (click)="addNewRow()">
   </div>
 </div>
 
@@ -44,38 +42,38 @@
         </select>
       </td>
       <td>
-        <input [class.is-invalid]="obj.get('sunday')?.invalid && obj.get('sunday')?.touched" type="text" id="sunday"
-               formControlName="sunday" size="2" class="form-control">
+        <input [class.is-invalid]="obj.get('sunday')?.invalid && obj.get('sunday')?.touched" type="number" id="sunday"
+               formControlName="sunday" class="form-control">
         <small [class.d-none]="obj.get('sunday')?.valid" class="text-danger">Enter valid hours</small>
       </td>
       <td>
-        <input [class.is-invalid]="obj.get('monday')?.invalid && obj.get('monday')?.touched" type="text" id="monday"
-               formControlName="monday" size="2" class="form-control">
+        <input [class.is-invalid]="obj.get('monday')?.invalid && obj.get('monday')?.touched" type="number" id="monday"
+               formControlName="monday" class="form-control">
         <small [class.d-none]="obj.get('monday')?.valid" class="text-danger">Enter valid hours</small>
       </td>
       <td>
-        <input [class.is-invalid]="obj.get('tuesday')?.invalid && obj.get('tuesday')?.touched" type="text" id="tuesday"
-               formControlName="tuesday" size="2" class="form-control">
+        <input [class.is-invalid]="obj.get('tuesday')?.invalid && obj.get('tuesday')?.touched" type="number" id="tuesday"
+               formControlName="tuesday" class="form-control">
         <small [class.d-none]="obj.get('tuesday')?.valid" class="text-danger">Enter valid hours</small>
       </td>
       <td>
-        <input [class.is-invalid]="obj.get('wednesday')?.invalid && obj.get('wednesday')?.touched" type="text" id="wednesday"
-               formControlName="wednesday" size="2" class="form-control">
+        <input [class.is-invalid]="obj.get('wednesday')?.invalid && obj.get('wednesday')?.touched" type="number" id="wednesday"
+               formControlName="wednesday" class="form-control">
         <small [class.d-none]="obj.get('wednesday')?.valid" class="text-danger">Enter valid hours</small>
       </td>
       <td>
-        <input [class.5]="obj.get('thursday')?.invalid && obj.get('thursday')?.touched" type="text" id="thursday"
-               formControlName="thursday" size="2" class="form-control">
+        <input [class.5]="obj.get('thursday')?.invalid && obj.get('thursday')?.touched" type="number" id="thursday"
+               formControlName="thursday" class="form-control">
         <small [class.d-none]="obj.get('thursday')?.valid" class="text-danger">Enter valid hours</small>
       </td>
       <td>
-        <input [class.is-invalid]="obj.get('friday')?.invalid && obj.get('friday')?.touched" type="text" id="friday"
-               formControlName="friday" size="2" class="form-control">
+        <input [class.is-invalid]="obj.get('friday')?.invalid && obj.get('friday')?.touched" type="number" id="friday"
+               formControlName="friday" class="form-control">
         <small [class.d-none]="obj.get('friday')?.valid" class="text-danger">Enter valid hours</small>
       </td>
       <td>
-        <input [class.is-invalid]="obj.get('saturday')?.invalid && obj.get('saturday')?.touched" type="text" id="saturday"
-               formControlName="saturday" size="2" class="form-control">
+        <input [class.is-invalid]="obj.get('saturday')?.invalid && obj.get('saturday')?.touched" type="number" id="saturday"
+               formControlName="saturday" class="form-control">
         <small [class.d-none]="obj.get('saturday')?.valid" class="text-danger">Enter valid hours</small>
       </td>
     </tr>
