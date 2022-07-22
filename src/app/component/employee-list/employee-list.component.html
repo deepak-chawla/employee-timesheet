@@ -10,13 +10,13 @@
     <th scope="col">Weekly Effort (Average)</th>
   </tr>
   </thead>
-  <tbody *ngFor="let employee of employees; let i = index">
+  <tbody *ngFor="let employee of employees;">
   <tr [routerLink]="['/employee',employee.id]" style="cursor: pointer">
-    <th scope="row">{{i+1}}</th>
+    <th scope="row">{{employee.id}}</th>
     <td>{{employee.code}}</td>
     <th>{{employee.name}}</th>
     <th>{{getWeeklyTotalHours(employee.id)}}</th>
-    <th>{{(getWeeklyTotalHours(employee.id)/168).toFixed(2)}}</th>
+    <th>{{(getWeeklyTotalHours(employee.id)/7) | number: '1.2-3'}}</th>
   </tr>
   </tbody>
 </table>
