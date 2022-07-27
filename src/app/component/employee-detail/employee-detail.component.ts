@@ -47,7 +47,7 @@ export class EmployeeDetailComponent implements OnInit {
     this.employeeId = this.route.snapshot.paramMap.get('employeeId');
   }
 
-  createTaskForm() {
+  private createTaskForm() {
     this.taskForm = this.fb.group({
       Tasks: this.fb.array([]),
     });
@@ -57,13 +57,13 @@ export class EmployeeDetailComponent implements OnInit {
     return this.taskForm.get('Tasks') as FormArray;
   }
 
-  renderTasks() {
+  private renderTasks() {
     this.tasks.forEach((task) => {
       this.formArr.push(this.initTasks(task));
     });
   }
 
-  addTask(task: any) {
+  private addTask(task: any) {
     return this.fb.group({
       tid: [task.tid],
       taskName: [task.taskName, Validators.required],
@@ -100,7 +100,7 @@ export class EmployeeDetailComponent implements OnInit {
     });
   }
 
-  initTasks(task: Task) {
+  private initTasks(task: Task) {
     return this.fb.group({
       tid: [task.tid],
       taskName: [task.taskName],
@@ -209,13 +209,15 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   newWeek(): void {
-    this.week--;
-    this.taskService
-      .getEmployeeTasks(this.selectedEmployee, this.week)
-      .subscribe((tasks) => {
-        this.tasks = tasks;
-        this.createTaskForm();
-        this.renderTasks();
-      });
+    if (this.week > 0) {
+      this.week--;
+      this.taskService
+        .getEmployeeTasks(this.selectedEmployee, this.week)
+        .subscribe((tasks) => {
+          this.tasks = tasks;
+          this.createTaskForm();
+          this.renderTasks();
+        });
+    }
   }
 }
