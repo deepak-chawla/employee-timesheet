@@ -53,3 +53,8 @@ h2{
   font-size: large;
   font-weight: bold;
 }
+
+input{
+  text-align: right;
+}
+

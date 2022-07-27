@@ -19,11 +19,12 @@ export class EmployeeListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.employeesService
-      .getEmployees()
-      .subscribe((employees) => (this.employees = employees));
-
-    this.taskServices.getTasks().subscribe((tasks) => (this.taskList = tasks));
+    this.employeesService.getEmployees().subscribe((employees) => {
+      this.employees = employees;
+    });
+    this.taskServices.getTasks().subscribe((tasks) => {
+      this.taskList = tasks;
+    });
   }
 
   getWeeklyTotalHours(employeeId: number): number {

@@ -19,6 +19,7 @@ export class EmployeeDetailComponent implements OnInit {
   tasks: Task[] = [];
   taskForm!: FormGroup;
   taskOptions: any = taskOptions;
+  week: number = 0;
 
   private workingHours: number = 24;
 
@@ -35,9 +36,8 @@ export class EmployeeDetailComponent implements OnInit {
       this.selectedEmployee = this.employees.find(
         (employee) => employee.id == this.employeeId
       );
-      console.log(`ngOnInit ${this.selectedEmployee.name}`);
       this.taskService
-        .getEmployeeTasks(this.selectedEmployee)
+        .getEmployeeTasks(this.selectedEmployee, 0)
         .subscribe((tasks) => {
           this.tasks = tasks;
           this.createTaskForm();
@@ -131,16 +131,24 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.taskForm.value.Tasks.forEach((task: Task) => {
+    const _tasks = this.taskForm.value.Tasks.map((task: Task) => {
       if (task.tid == null) {
         task.employee = this.selectedEmployee;
         task.date = new Date();
       }
-      this.taskService.updateEmployeeTask(task).subscribe();
+      return task;
+    });
+    this.taskService.updateEmployeeTask(_tasks).subscribe({
+      next(tasks) {
+        alert('Task Updated');
+      },
+      error(err) {
+        console.log('Error : ' + err.message);
+      },
     });
     this.employeeId = this.selectedEmployee.id;
     this.taskService
-      .getEmployeeTasks(this.selectedEmployee)
+      .getEmployeeTasks(this.selectedEmployee, 0)
       .subscribe((tasks) => (this.tasks = tasks));
   }
 
@@ -181,13 +189,22 @@ export class EmployeeDetailComponent implements OnInit {
       (employees) => employees.id == value
     );
     this.taskService
-      .getEmployeeTasks(this.selectedEmployee)
+      .getEmployeeTasks(this.selectedEmployee, 0)
       .subscribe((tasks) => {
         this.tasks = tasks;
         this.createTaskForm();
         this.renderTasks();
       });
-    this.employeeId = this.selectedEmployee.employeeId;
-    console.log(`onEmployeeSelected ${this.selectedEmployee.name}`);
+  }
+
+  previousWeek(): void {
+    this.week++;
+    this.taskService
+      .getEmployeeTasks(this.selectedEmployee, this.week)
+      .subscribe((tasks) => {
+        this.tasks = tasks;
+        this.createTaskForm();
+        this.renderTasks();
+      });
   }
 }
