@@ -19,8 +19,8 @@ export class EmployeeDetailComponent implements OnInit {
   tasks: Task[] = [];
   taskForm!: FormGroup;
   taskOptions: any = taskOptions;
-  week: number = 0;
 
+  private week: number = 0;
   private workingHours: number = 24;
 
   constructor(
@@ -199,6 +199,17 @@ export class EmployeeDetailComponent implements OnInit {
 
   previousWeek(): void {
     this.week++;
+    this.taskService
+      .getEmployeeTasks(this.selectedEmployee, this.week)
+      .subscribe((tasks) => {
+        this.tasks = tasks;
+        this.createTaskForm();
+        this.renderTasks();
+      });
+  }
+
+  newWeek(): void {
+    this.week--;
     this.taskService
       .getEmployeeTasks(this.selectedEmployee, this.week)
       .subscribe((tasks) => {
