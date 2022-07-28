@@ -1,4 +1,4 @@
-export const getLastWeekDate = (week: number) => {
+export const getWeekSundayDate = (week: number) => {
   const now = getLastSunday(new Date());
   const new1 = new Date(
     now.getFullYear(),
@@ -11,7 +11,7 @@ export const getLastWeekDate = (week: number) => {
   return year + '-' + month + '-' + day;
 };
 
-export const getEndWeekDate = (week: number) => {
+export const getWeekSaturdayDate = (week: number) => {
   const now = getLastSunday(new Date());
   const new1 = new Date(
     now.getFullYear(),

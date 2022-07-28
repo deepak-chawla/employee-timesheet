@@ -11,7 +11,7 @@ import { Task } from '../../shared/Task';
 })
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
-  taskList: Task[] = [];
+  weeklyTasks: Task[] = [];
 
   constructor(
     private employeesService: EmployeesService,
@@ -22,25 +22,8 @@ export class EmployeeListComponent implements OnInit {
     this.employeesService.getEmployees().subscribe((employees) => {
       this.employees = employees;
     });
-    this.taskServices.getTasks().subscribe((tasks) => {
-      this.taskList = tasks;
+    this.taskServices.getWeeklyTasks().subscribe((tasks) => {
+      this.weeklyTasks = tasks;
     });
-  }
-
-  getWeeklyTotalHours(employeeId: number): number {
-    const empTasks = this.taskList.filter(
-      (task) => task.employee.id == employeeId
-    );
-    return empTasks.reduce((total, currentValue) => {
-      total +=
-        currentValue.sunday +
-        currentValue.monday +
-        currentValue.tuesday +
-        currentValue.wednesday +
-        currentValue.thursday +
-        currentValue.friday +
-        currentValue.saturday;
-      return total;
-    }, 0);
   }
 }

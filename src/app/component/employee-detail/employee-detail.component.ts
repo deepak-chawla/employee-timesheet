@@ -143,10 +143,9 @@ export class EmployeeDetailComponent implements OnInit {
         alert('Task Updated');
       },
       error(err) {
-        console.log('Error : ' + err.message);
+        alert('Error : ' + err.message);
       },
     });
-    this.employeeId = this.selectedEmployee.id;
     this.taskService
       .getEmployeeTasks(this.selectedEmployee, 0)
       .subscribe((tasks) => (this.tasks = tasks));
