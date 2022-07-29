@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from '../../services/employee-service/employees.service';
-import { Employee } from '../../shared/Employee';
+import { Employee } from '../../shared/interfaces/Employee';
 import { TaskService } from '../../services/task-service/task.service';
-import { Task } from '../../shared/Task';
+import { Task } from '../../shared/interfaces/Task';
 
 @Component({
   selector: 'app-employee-list',

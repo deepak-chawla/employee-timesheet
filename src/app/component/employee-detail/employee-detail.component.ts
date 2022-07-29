@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../../shared/Employee';
+import { Employee } from '../../shared/interfaces/Employee';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeesService } from '../../services/employee-service/employees.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { TaskService } from '../../services/task-service/task.service';
-import { Task } from '../../shared/Task';
+import { Task } from '../../shared/interfaces/Task';
 import { taskOptions } from '../../shared/constant/TaskOptions';
 
 @Component({
@@ -31,6 +31,8 @@ export class EmployeeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.employeeId = this.route.snapshot.paramMap.get('employeeId');
+    this.createTaskForm();
     this.employeesService.getEmployees().subscribe((employees) => {
       this.employees = employees;
       this.selectedEmployee = this.employees.find(
@@ -40,11 +42,9 @@ export class EmployeeDetailComponent implements OnInit {
         .getEmployeeTasks(this.selectedEmployee, 0)
         .subscribe((tasks) => {
           this.tasks = tasks;
-          this.createTaskForm();
           this.renderTasks();
         });
     });
-    this.employeeId = this.route.snapshot.paramMap.get('employeeId');
   }
 
   private createTaskForm() {
@@ -95,8 +95,8 @@ export class EmployeeDetailComponent implements OnInit {
         task.saturday,
         Validators.max(this.workingHours - this.getDayTotal('saturday')),
       ],
-      date: [task.date],
-      employee: [task.employee],
+      date: [new Date()],
+      employee: [this.selectedEmployee],
     });
   }
 
@@ -131,24 +131,13 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const _tasks = this.taskForm.value.Tasks.map((task: Task) => {
-      if (task.tid == null) {
-        task.employee = this.selectedEmployee;
-        task.date = new Date();
-      }
-      return task;
-    });
-    this.taskService.updateEmployeeTask(_tasks).subscribe({
-      next(tasks) {
-        alert('Task Updated');
+    this.taskService.updateEmployeeTask(this.taskForm.value.Tasks).subscribe(
+      (tasks) => {
+        this.tasks = tasks;
+        alert('Tasks Updated');
       },
-      error(err) {
-        alert('Error : ' + err.message);
-      },
-    });
-    this.taskService
-      .getEmployeeTasks(this.selectedEmployee, 0)
-      .subscribe((tasks) => (this.tasks = tasks));
+      (error) => alert(error.message)
+    );
   }
 
   getDayTotal(day: string): number {

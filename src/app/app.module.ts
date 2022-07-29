@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeesService } from './services/employee-service/employees.service';
 import { TaskService } from './services/task-service/task.service';
-import { TotalWeekHourPipe } from './shared/custom-pipe/total-week-hour.pipe';
+import { TotalWeekHourPipe } from './shared/pipe/total-week-hour.pipe';
 
 @NgModule({
   declarations: [AppComponent, routingComponents, TotalWeekHourPipe],

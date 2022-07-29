@@ -91,7 +91,7 @@
   </table>
   <div class="table-buttons">
     <button type="button" class="btn btn-secondary" [routerLink]="['/']">Back To List</button>
-    <button [disabled]="!taskForm.valid" type="submit" class="btn btn-primary">Save</button>
+    <button [disabled]="taskForm.invalid" type="submit" class="btn btn-primary">Save</button>
   </div>
 </form>
 
